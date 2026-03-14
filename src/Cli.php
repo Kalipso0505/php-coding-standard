@@ -30,6 +30,8 @@ class Cli
 
     public const PARAMETER_ONLY = 'only';
 
+    public const PARAMETER_MEMORY_LIMIT = 'memory-limit';
+
     public static function isOnWindows(): bool
     {
         return PHP_OS_FAMILY === 'Windows';

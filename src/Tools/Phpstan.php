@@ -17,6 +17,11 @@ class Phpstan extends Tool
     /** @var string */
     protected $name = 'phpstan';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         $ignoreSources = (bool) ($context->config->getPart($this->getName())[Config::IGNORE_SOURCES] ?? false);

@@ -20,6 +20,11 @@ class Psalm extends Tool
     /** @var string */
     protected $name = 'psalm';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         $binary = self::vendorBinary($this->name);

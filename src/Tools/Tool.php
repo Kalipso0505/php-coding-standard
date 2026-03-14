@@ -35,6 +35,9 @@ abstract class Tool
     /** @var OutputInterface */
     protected $output;
 
+    /** @var Context|null */
+    protected $context;
+
     public function setInput(InputInterface $input): void
     {
         $this->input = $input;
@@ -43,6 +46,11 @@ abstract class Tool
     public function setOutput(OutputInterface $output): void
     {
         $this->output = $output;
+    }
+
+    public function setContext(Context $context): void
+    {
+        $this->context = $context;
     }
 
     /**
@@ -84,7 +92,13 @@ abstract class Tool
             return $argument !== '';
         });
 
-        $command = array_merge([$binary], $arguments);
+        $memoryLimit = $this->context !== null ? $this->context->memoryLimit : null;
+
+        if ($memoryLimit !== null && $this->supportsMemoryLimit()) {
+            $command = array_merge([PHP_BINARY, '-d', "memory_limit={$memoryLimit}", $binary], $arguments);
+        } else {
+            $command = array_merge([$binary], $arguments);
+        }
 
         if ($this->output->isVeryVerbose()) {
             $this->output->writeln('Executing: ' . implode(' ', $command), Output::OUTPUT_RAW);
@@ -128,6 +142,8 @@ abstract class Tool
 
         return (int) $process->getExitCode();
     }
+
+    abstract protected function supportsMemoryLimit(): bool;
 
     protected static function vendorBinary(string $binary): string
     {

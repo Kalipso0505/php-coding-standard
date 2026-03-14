@@ -14,6 +14,11 @@ class PhpCodeSniffer extends Tool
     /** @var string */
     protected $name = 'php_codesniffer';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         if ($context->isFixing) {
