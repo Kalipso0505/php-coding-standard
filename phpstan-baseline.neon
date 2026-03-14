@@ -31,7 +31,51 @@ parameters:
 			path: src/Tools/Tool.php
 
 		-
-			message: "#^Parameter \\#1 \\$commandName of method Symfony\\\\Component\\\\Console\\\\Application\\:\\:setDefaultCommand\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Method Spaceemotion\\\\PhpCodingStandard\\\\Config\\:\\:getSources\\(\\) should return array\\<string\\> but returns mixed\\.$#"
 			count: 1
-			path: src/main.php
+			path: src/Config.php
 
+		-
+			message: "#^Cannot access offset 'enabled' on mixed\\.$#"
+			count: 1
+			path: src/Config.php
+
+		-
+			message: "#^Parameter \\#1 \\$base of static method Spaceemotion\\\\PhpCodingStandard\\\\Config\\:\\:mergeConfig\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: src/Config.php
+
+		-
+			message: "#^Method Spaceemotion\\\\PhpCodingStandard\\\\Config\\:\\:readConfigs\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Config.php
+
+		-
+			message: "#^Call to function array_filter\\(\\) requires parameter \\#2 to be passed to avoid loose comparison semantics\\.$#"
+			count: 1
+			path: src/Config.php
+
+		-
+			message: "#^Parameter \\#1 \\$array \\(array\\{non\\-falsy\\-string, non\\-falsy\\-string\\}\\) to function array_filter does not contain falsy values, the array will always stay the same\\.$#"
+			count: 1
+			path: src/Config.php
+
+		-
+			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and mixed results in an error\\.$#"
+			count: 1
+			path: src/Config.php
+
+		-
+			message: "#^Part \\$include \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
+			count: 2
+			path: src/Config.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(mixed\\)\\: mixed\\)\\|null, 'strval' given\\.$#"
+			count: 1
+			path: src/Commands/RunCommand.php
+
+		-
+			message: "#^Call to function array_filter\\(\\) requires parameter \\#2 to be passed to avoid loose comparison semantics\\.$#"
+			count: 1
+			path: src/Commands/RunCommand.php

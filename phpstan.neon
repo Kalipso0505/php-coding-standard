@@ -11,12 +11,10 @@ parameters:
         - src
         - tests
 
-    excludes_analyse:
+    excludePaths:
         - ecs.php
 
     ignoreErrors:
-        - '#Constant PHPCSTD_#'
-
         -
             message: '#no typehint specified#'
             path: src/Tools/PhpParallelLint/ContextOutput.php
