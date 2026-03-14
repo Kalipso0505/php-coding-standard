@@ -15,6 +15,11 @@ class PhpParallelLint extends Tool
     /** @var string */
     protected $name = self::NAME;
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         $config = $context->config->getPart($this->name);

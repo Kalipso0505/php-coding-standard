@@ -26,6 +26,9 @@ class Context
     /** @var string[] */
     public $toolsExecuted = [];
 
+    /** @var string|null */
+    public $memoryLimit = null;
+
     /** @var Result */
     public $result;
 

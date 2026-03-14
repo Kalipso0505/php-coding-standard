@@ -21,6 +21,11 @@ class Rector extends Tool
     /** @var string */
     protected $name = 'rector';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         $binary = self::vendorBinary('rector');

@@ -16,6 +16,11 @@ class Deptrac extends Tool
     /** @var string */
     protected $name = 'deptrac';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         $outputFile = $this->createTempReportFile();

@@ -107,6 +107,13 @@ class RunCommand extends Command
             'Only returns with exit code 0, regardless of any errors/warnings'
         );
 
+        $this->addOption(
+            Cli::PARAMETER_MEMORY_LIMIT,
+            'm',
+            InputOption::VALUE_REQUIRED,
+            'Sets the PHP memory limit for child processes (e.g. "512M", "-1" for unlimited)'
+        );
+
         $this->addArgument(
             'files',
             InputArgument::IS_ARRAY | InputArgument::OPTIONAL,
@@ -129,6 +136,7 @@ class RunCommand extends Command
         $context->isFixing = (bool) $input->getOption(Cli::FLAG_FIX) || $this->config->shouldAutoFix();
         $context->runningInCi = (bool) $input->getOption(Cli::FLAG_CI);
         $context->files = $files;
+        $context->memoryLimit = $input->getOption(Cli::PARAMETER_MEMORY_LIMIT);
 
         if ($context->runningInCi) {
             $input->setInteractive(false);
@@ -185,6 +193,7 @@ class RunCommand extends Command
 
             $tool->setInput($input);
             $tool->setOutput($output);
+            $tool->setContext($context);
 
             $start = time();
             $result = $tool->run($context);

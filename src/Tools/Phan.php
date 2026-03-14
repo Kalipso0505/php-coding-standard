@@ -16,6 +16,11 @@ class Phan extends Tool
     /** @var string */
     protected $name = 'phan';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return true;
+    }
+
     public function run(Context $context): bool
     {
         $outputFile = $this->createTempReportFile();

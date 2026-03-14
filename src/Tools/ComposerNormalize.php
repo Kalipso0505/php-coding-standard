@@ -24,6 +24,11 @@ class ComposerNormalize extends Tool
     /** @var string */
     protected $name = 'composer-normalize';
 
+    protected function supportsMemoryLimit(): bool
+    {
+        return false;
+    }
+
     public function shouldRun(Context $context): bool
     {
         // TODO does not check against file names, only full paths
