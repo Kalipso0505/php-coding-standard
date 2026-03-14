@@ -19,7 +19,7 @@ use Symfony\Component\Console\Application;
 
 require_once __DIR__ . '/init.php';
 
-$command = new RunCommand('phpcstd');
+$command = new RunCommand();
 $command->addTool(new ComposerNormalize());
 $command->addTool(new PhpParallelLint());
 $command->addTool(new Deptrac());
@@ -33,6 +33,6 @@ $command->addTool(new Phan());
 
 $application = new Application('phpcstd');
 
-$application->add($command);
-$application->setDefaultCommand($command->getName());
+$application->addCommand($command);
+$application->setDefaultCommand('run');
 $application->run();

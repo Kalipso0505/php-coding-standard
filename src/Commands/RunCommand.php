@@ -11,6 +11,7 @@ use Spaceemotion\PhpCodingStandard\Context;
 use Spaceemotion\PhpCodingStandard\Formatter\ConsoleFormatter;
 use Spaceemotion\PhpCodingStandard\Formatter\GithubActionFormatter;
 use Spaceemotion\PhpCodingStandard\Tools\Tool;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Helper\Helper;
@@ -27,13 +28,9 @@ use function in_array;
 use function ltrim;
 use function substr;
 
+#[AsCommand(name: 'run')]
 class RunCommand extends Command
 {
-    public const SUCCESS = 0;
-
-    /** @var string */
-    protected static $defaultName = 'run';
-
     /** @var Tool[] */
     private $tools = [];
 

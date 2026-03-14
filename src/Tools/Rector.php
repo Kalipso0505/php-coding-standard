@@ -11,7 +11,6 @@ use Spaceemotion\PhpCodingStandard\Formatter\Result;
 
 use function array_map;
 use function basename;
-use function file_get_contents;
 use function implode;
 use function preg_replace;
 use function str_replace;

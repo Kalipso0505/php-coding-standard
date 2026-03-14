@@ -32,11 +32,7 @@ class Cli
 
     public static function isOnWindows(): bool
     {
-        if (defined('PHP_OS_FAMILY')) {
-            return PHP_OS_FAMILY === 'Windows';
-        }
-
-        return stripos(PHP_OS, 'WIN') === 0;
+        return PHP_OS_FAMILY === 'Windows';
     }
 
     /**
